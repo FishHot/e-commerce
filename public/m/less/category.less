@@ -1,0 +1,44 @@
+@import 'base.less';
+#main{
+    display: flex;
+    padding-top: 10px;
+    background-color: #c9c9c9;
+    .cate-slide{
+        li{
+            &.active{
+                a{
+                background-color: #c9c9c9;
+                }
+            }  
+            a{
+                display: block;
+                width: 80px;
+                height: 45px;
+                line-height: 45px;
+                text-align: center;
+                background-color: #fff;
+            }
+        }
+    }
+    .cate-content{
+        flex: 1;
+        position: relative;
+        height: 100%;
+        .mui-scroll{
+            min-height: 100%;
+        }
+        a{
+            display: block;
+            background-color: #fff;
+            padding-bottom: 10px;
+            img{
+                width: 100%;
+            }
+            p{
+                margin: 0;
+                text-align: center;
+            }
+                 
+        }
+    }
+}
