@@ -41,9 +41,19 @@ body{
         line-height: 45px;
         margin: 0;
     }
-    >a{
+    >a.icon-search{
         position: absolute;
         right: 0px;
+        top: 0px;
+        color: #fff;
+        width: 45px;
+        height: 45px;
+        padding: 15px 13px;
+        z-index:999;
+    }
+    >a.icon-left{
+        position: absolute;
+        left: 0px;
         top: 0px;
         color: #fff;
         width: 45px;
@@ -56,11 +66,21 @@ body{
         align-items: center;
         >a{
             position: static;
+            width: 45px;
+            height: 45px;
+            color: #fff;
+            text-align: center;
+            line-height: 45px;
         }
         .search{
-            height: 30px;
+            height: 35px;
             flex: 1;
-            background-color: #fff;
+            input{
+                margin: 0;
+                text-align: left;
+                background-color: #fff;
+                font-size: 14px;
+            }
         }
     }
     

@@ -1,0 +1,44 @@
+@import "base.less";
+#main{
+    background-color: #fff;
+    .search-box{
+        display: flex;
+        padding: 10px;
+        .input-search{
+            flex: 1;
+            height: 30px;
+            border: 1px solid @mainColor;
+            border-radius: 6px 0 0 6px ;
+            >input{
+                margin: 0;
+                height: 28px;
+                text-align: left;
+                font-size: 14px;
+                background-color: #fff;
+            }
+        }
+        .btn-search{
+            width: 60px;
+            height: 30px;
+            background-color: @mainColor;
+            border: 1px solid @mainColor;
+            border-radius: 0 6px 6px 0 ;
+        }
+    }
+   .sift{
+       >ul{
+           background-color: #efeff4;
+           display: flex;
+           >li{
+               flex: 1;
+               text-align: center;
+               font-size: 12px;
+               height: 30px;
+               line-height: 30px;
+               span{
+                   margin-right: 3px;
+               }
+           }
+       }
+   }
+}

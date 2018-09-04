@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=nos">
@@ -11,24 +10,18 @@
     <link rel="stylesheet/less" href="./less/category.less">
     <script src="./lib/less/less.js"></script>
 </head>
-
 <body>
     <!-- 头部区域 -->
     <header id="header" class="category">
         <a class="fa fa-chevron-left back" href="./index.html"></a>
         <form action="#"  class="search">
-                <input type="search">
+                <input type="search" placeholder="输入查询内容">
             </form>
-        <a class="fa fa-search" href="#"></a>
+        <a class="fa fa-search" href="./search.html"></a>
     </header>
     <main id="main">
         <div class="cate-slide">
             <ul>
-                <li  class="active"><a href="#">运动馆</a></li>
-                <li><a href="#">女士馆</a></li>
-                <li><a href="#">男士馆</a></li>
-                <li><a href="#">帆布馆</a></li>
-                <li><a href="#">户外馆</a></li>
             </ul>
         </div>
         <div class="cate-content">
@@ -37,66 +30,6 @@
                     <!-- 主要内容 -->
                     <div class="mui-scroll">
                         <div class="mui-row">
-                            <div class="mui-col-xs-4">
-                                <a href="#">
-                                    <img src="/mobile/images/brand1.png" alt="">
-                                    <p>耐克</p>
-                                </a>
-                            </div>
-                            <div class="mui-col-xs-4">
-                                <a href="#">
-                                    <img src="/mobile/images/brand2.png" alt="">
-                                    <p>耐克</p>
-                                </a>
-                            </div>
-                            <div class="mui-col-xs-4">
-                                <a href="#">
-                                    <img src="/mobile/images/brand3.png" alt="">
-                                    <p>耐克</p>
-                                </a>
-                            </div>
-                            <div class="mui-col-xs-4">
-                                <a href="#">
-                                    <img src="/mobile/images/brand4.png" alt="">
-                                    <p>耐克</p>
-                                </a>
-                            </div>
-                            <div class="mui-col-xs-4">
-                                <a href="#">
-                                    <img src="/mobile/images/brand5.png" alt="">
-                                    <p>耐克</p>
-                                </a>
-                            </div>
-                            <div class="mui-col-xs-4">
-                                <a href="#">
-                                    <img src="/mobile/images/brand1.png" alt="">
-                                    <p>耐克</p>
-                                </a>
-                            </div>
-                            <div class="mui-col-xs-4">
-                                <a href="#">
-                                    <img src="/mobile/images/brand2.png" alt="">
-                                    <p>耐克</p>
-                                </a>
-                            </div>
-                            <div class="mui-col-xs-4">
-                                <a href="#">
-                                    <img src="/mobile/images/brand3.png" alt="">
-                                    <p>耐克</p>
-                                </a>
-                            </div>
-                            <div class="mui-col-xs-4">
-                                <a href="#">
-                                    <img src="/mobile/images/brand4.png" alt="">
-                                    <p>耐克</p>
-                                </a>
-                            </div>
-                            <div class="mui-col-xs-4">
-                                <a href="#">
-                                    <img src="/mobile/images/brand5.png" alt="">
-                                    <p>耐克</p>
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -112,9 +45,32 @@
             <div class="mui-col-xs-3"><a href="#"><i class="fa fa-user"></i><span>会员中心</span></a></div>
         </div>
     </footer>
+   
     <script src="./lib/zepto/zepto.min.js"></script>
     <script src="./lib/mui/js/mui.js"></script>
-    <script src="./lib/artTemplate/template.js"></script>
+    <script src="./lib/artTemplate/template-web.js"></script>
+    <script type="text/html" id="cateTpl">
+        {{each rows value key}}
+        <li class='{{key==0?"active":""}}' >
+            <a href="#" data-id='{{value.id}}'> {{value.categoryName}} </a>
+        </li>
+        {{/each}}
+    </script>
+    <script type="text/html" id="contentTpl">
+        {{if rows.length>0}}
+        {{each rows value key}}
+        <div class="mui-col-xs-4">
+                <a href="#">
+                    <img src="{{value.brandLogo}}" alt="">
+                    <p>{{value.brandName}}</p>
+                </a>
+            </div>
+        {{/each}}
+        {{else}}
+        <p>商品不存在</p>
+        {{/if}}
+    </script>
+
     <script src="./js/category.js"></script>
 </body>
 

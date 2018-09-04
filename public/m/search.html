@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>移动首页</title>
+    <!-- 1.引入mui的css文件 -->
+    <link rel="stylesheet" href="lib/mui/css/mui.css">
+    <!-- 字体图标 -->
+    <link rel="stylesheet" href="lib/fontAwesome/css/font-awesome.css">
+    <!-- less文件 -->
+    <link rel="stylesheet/less" href="./less/search.less">
+    <!-- less编译 -->
+    <script src="./lib/less/less.js"></script>
+</head>
+
+<body>
+
+    <!-- 头部区域 -->
+    <header id="header">
+        <h4>搜索中心</h4>
+        <a class="fa fa-arrow-left icon-left" href="#"></a>
+    </header>
+    <main id="main">
+            <div class="search-box">
+                    <form action="#" class="input-search">
+                        <input type="search" placeholder="输入你喜欢的商品">
+                    </form>
+                    <button type="button" class="btn-search mui-btn mui-btn-primary">搜索</button>
+                </div>
+                <div class="history">
+                    <div class="history-title">
+                        <span>搜索历史</span>
+                        <i class="fa fa-trash history-clear">清空记录</i>
+                    </div>
+                    <div class="history-content">
+                        <ul>
+        
+                        </ul>
+                    </div>
+                </div>
+    </main>
+    <!-- 底部区域 -->
+    <footer id="footer">
+        <div class="mui-row">
+            <div class="mui-col-xs-3"><a href="./index.html"><i class="fa fa-home active"></i><span>首页</span> </a></div>
+            <div class="mui-col-xs-3"><a href="./category.html"><i class="fa fa-bars"></i><span>分类</span></a></div>
+            <div class="mui-col-xs-3"><a href="#"><i class="fa fa-shopping-cart"></i><span>购物车</span></a></div>
+            <div class="mui-col-xs-3"><a href="#"><i class="fa fa-user"></i><span>会员中心</span></a></div>
+        </div>
+    </footer>
+
+    <script type="text/html" id="historyTpl">
+            {{each rows value}}
+            <li>
+                <span>{{value.content}}</span>
+                <i class="fa fa-close mui-pull-right delete" data-id=" {{value.id}} "></i>
+            </li>
+            {{/each}}
+        </script>
+    <!-- mui插件 -->
+    <script src="./lib/mui/js/mui.js"></script>
+    <!-- 操作元素 -->
+    <script src="./lib/zepto/zepto.min.js"></script>
+    <!-- 模板引擎 -->
+    <script src="./lib/artTemplate/template-web.js"></script>
+    <script src="./js/search.js"></script>
+</body>
+
+</html>

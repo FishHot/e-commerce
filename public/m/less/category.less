@@ -1,12 +1,11 @@
 @import 'base.less';
 #main{
     display: flex;
-    padding-top: 10px;
     background-color: #c9c9c9;
     .cate-slide{
         li{
             &.active{
-                a{
+                >a{
                 background-color: #c9c9c9;
                 }
             }  
@@ -17,6 +16,7 @@
                 line-height: 45px;
                 text-align: center;
                 background-color: #fff;
+                border-bottom: 1px solid #ccc;
             }
         }
     }
@@ -25,7 +25,10 @@
         position: relative;
         height: 100%;
         .mui-scroll{
-            min-height: 100%;
+            min-height: 101%;
+            .mui-row{
+                padding: 10px;
+            }
         }
         a{
             display: block;
