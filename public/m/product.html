@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>移动首页</title>
+    <!-- 1.引入mui的css文件 -->
+    <link rel="stylesheet" href="lib/mui/css/mui.css">
+    <!-- 字体图标 -->
+    <link rel="stylesheet" href="lib/fontAwesome/css/font-awesome.css">
+    <!-- less文件 -->
+    <link rel="stylesheet/less" href="./less/product.less">
+    <!-- less编译 -->
+    <script src="./lib/less/less.js"></script>
+</head>
+
+<body>
+
+    <!-- 头部区域 -->
+    <header id="header">
+        <h4>商品详情</h4>
+        <a class="fa fa-arrow-left icon-left" href="javascript:history.back()"></a>
+        <a class="fa fa-home icon-home" href="./index.html"></a>
+    </header>
+    <main id="main">
+        <div class="mui-scroll-wrapper">
+            <!--这里放置真实显示的DOM内容-->
+            <!-- 主要内容 -->
+            <div class="mui-scroll">
+               <section id="slide">
+
+               </section>
+                <section id="product-detail">
+                   
+                </section>
+            </div>
+        </div>
+
+    </main>
+    <!-- 底部区域 -->
+    <footer id="footer" class="productDetail">
+        <div class="mui-row">
+            <div href="" class="mui-col-xs-2 fa fa-shopping-cart icon-car">
+                
+            </div>
+            <div href="" class="mui-col-xs-5 addbuyCar">
+                    <button type="button" class="mui-btn mui-btn-danger btn-buyCar">加入购物车</button>
+            </div>
+            <div href="" class="mui-col-xs-5 buy">
+                    <button type="button" class="mui-btn mui-btn-warning btn-buy">立即购买</button>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/html" id="slideTpl">
+        <section id="slide">
+                <div class="mui-slider">
+                    <div class="mui-slider-group mui-slider-loop">
+                        <!--支持循环，需要重复图片节点-->
+                        <div class="mui-slider-item mui-slider-item-duplicate">
+                                <a href="#">
+                                    <img src="{{pic[pic.length-1].picAddr}}" />
+                                </a>
+                            </div>
+                            {{each pic value}}
+                            <div class="mui-slider-item">
+                                <a href="#">
+                                    <img src="{{value.picAddr}}" />
+                                </a>
+                            </div>
+                            {{/each}}
+                            <!--支持循环，需要重复图片节点-->
+                            <div class="mui-slider-item mui-slider-item-duplicate">
+                                <a href="#">
+                                    <img src="{{pic[0].picAddr}}" />
+                                </a>
+                            </div>
+                    </div>
+                    <div class="mui-slider-indicator">
+                            {{each pic value i}}
+                            <div class="mui-indicator {{i == 0?'mui-active':''}}"></div>
+                            {{/each}}
+                    </div>
+                </div>
+            </section>
+        </script>
+        <script type="text/html" id="productDetail">
+        
+            <div class="product-name">
+                    <p>{{proName}}</p>
+                </div>
+                <div class="product-price">
+                    <span>价格：</span>
+                    <strong>¥{{price}}</strong>
+                    <del>¥{{oldPrice}}</del>
+                </div>
+                <div class="product-size mui-clearfix">
+                    <ul class="mui-clearfix">
+                        <li>尺码:</li>
+                        {{each size value}}
+                        <li class='size' data-size='{{value}}'>{{value}}</li>
+                        {{/each}}
+                    </ul>
+                </div>
+                <div class="product-num mui-clearfix">
+                    <span>数量:</span>
+                    <div class="mui-numbox" data-numbox-step='1' data-numbox-min='0' data-numbox-max='{{num}}'>
+                            <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+                            <input class="mui-numbox-input" type="number" />
+                            <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+                          </div>
+                    <span>剩余:{{num}}件</span>
+                </div>
+
+        </script>
+    <!-- mui插件 -->
+    <script src="./lib/mui/js/mui.js"></script>
+    <!-- 操作元素 -->
+    <script src="./lib/zepto/zepto.min.js"></script>
+    <!-- 模板引擎 -->
+    <script src="./lib/artTemplate/template-web.js"></script>
+    <script src="./js/product.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,232 @@
+<html><head>
+    <meta charset="utf-8">
+    <title>Hello MUI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!--标准mui.css-->
+    <link rel="stylesheet" href="../css/mui.min.css">
+    <!--App自定义的css-->
+    <link rel="stylesheet" type="text/css" href="../css/app.css">
+<style type="text/css" abt="234"></style><script>//console.log('a')
+</script><script>//remove 17173 video ad
+doAdblock();
+function doAdblock(){
+(function() {
+    function A() {}
+    A.prototype = {
+        rules: {
+            '17173_in':{
+                'find':/http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/PreloaderFile(Customer)?\.swf/,
+                'replace':"http://swf.adtchrome.com/17173_in_20150522.swf"
+            },
+            '17173_out':{
+                'find':/http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/PreloaderFileFirstpage\.swf/,
+                'replace':"http://swf.adtchrome.com/17173_out_20150522.swf"
+            },
+            '17173_live':{
+                'find':/http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/Player_stream(_firstpage)?\.swf/,
+                'replace':"http://swf.adtchrome.com/17173_stream_20150522.swf"
+            },
+            '17173_live_out':{
+                'find':/http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/Player_stream_(custom)?Out\.swf/,
+                'replace':"http://swf.adtchrome.com/17173.out.Live.swf"
+            }
+        },
+        _done: null,
+        get done() {
+            if(!this._done) {
+                this._done = new Array();
+            }
+            return this._done;
+        },
+        addAnimations: function() {
+            var style = document.createElement('style');
+            style.type = 'text/css';
+            style.innerHTML = 'object,embed{\
+            -webkit-animation-duration:.001s;-webkit-animation-name:playerInserted;\
+            -ms-animation-duration:.001s;-ms-animation-name:playerInserted;\
+            -o-animation-duration:.001s;-o-animation-name:playerInserted;\
+            animation-duration:.001s;animation-name:playerInserted;}\
+            @-webkit-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}\
+            @-ms-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}\
+            @-o-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}\
+            @keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}';
+            document.getElementsByTagName('head')[0].appendChild(style);
+        },
+        animationsHandler: function(e) {
+            if(e.animationName === 'playerInserted') {
+                this.replace(e.target);
+            }
+        },
+        replace: function(elem) {
+            if(this.done.indexOf(elem) != -1) return;
+            this.done.push(elem);
+            var player = elem.data || elem.src;
+            if(!player) return;
+            var i, find, replace = false;
+            for(i in this.rules) {
+                find = this.rules[i]['find'];
+                if(find.test(player)) {
+                    replace = this.rules[i]['replace'];
+                    if('function' === typeof this.rules[i]['preHandle']) {
+                        this.rules[i]['preHandle'].bind(this, elem, find, replace, player)();
+                    }else{
+                        this.reallyReplace.bind(this, elem, find, replace)();
+                    }
+                    break;
+                }
+            }
+        },
+        reallyReplace: function(elem, find, replace) {
+            elem.data && (elem.data = elem.data.replace(find, replace)) || elem.src && ((elem.src = elem.src.replace(find, replace)) && (elem.style.display = 'block'));
+            var b = elem.querySelector("param[name='movie']");
+            this.reloadPlugin(elem);
+        },
+        reloadPlugin: function(elem) {
+            var nextSibling = elem.nextSibling;
+            var parentNode = elem.parentNode;
+            parentNode.removeChild(elem);
+            var newElem = elem.cloneNode(true);
+            this.done.push(newElem);
+            if(nextSibling) {
+                parentNode.insertBefore(newElem, nextSibling);
+            } else {
+                parentNode.appendChild(newElem);
+            }
+        },
+        init: function() {
+            var handler = this.animationsHandler.bind(this);
+            document.body.addEventListener('webkitAnimationStart', handler, false);
+            document.body.addEventListener('msAnimationStart', handler, false);
+            document.body.addEventListener('oAnimationStart', handler, false);
+            document.body.addEventListener('animationstart', handler, false);
+            this.addAnimations();
+        }
+    };
+    new A().init();
+})();
+}
+//remove baidu search ad
+if(document.URL.indexOf('www.baidu.com') >= 0){
+if(document && document.getElementsByTagName && document.getElementById && document.body){
+    var aa = function(){
+        var all = document.body.querySelectorAll("#content_left div,#content_left table");
+        for(var i = 0; i < all.length; i++){
+            if(/display:\s?(table|block)\s!important/.test(all[i].getAttribute("style"))){all[i].style.display= "none";all[i].style.visibility='hidden';}
+        }
+        all = document.body.querySelectorAll('.result.c-container[id="1"]');
+        //if(all.length == 1) return;
+        for(var i = 0; i < all.length; i++){
+            if(all[i].innerHTML && all[i].innerHTML.indexOf('广告')>-1){
+                all[i].style.display= "none";all[i].style.visibility='hidden';
+            }
+        }
+    }
+    aa();
+    document.getElementById('wrapper_wrapper').addEventListener('DOMSubtreeModified',aa)
+};
+}
+//remove sohu video ad
+if (document.URL.indexOf("tv.sohu.com") >= 0){
+if (document.cookie.indexOf("fee_status=true")==-1){document.cookie='fee_status=true'};
+}
+//remove 56.com video ad
+if (document.URL.indexOf("56.com") >= 0){
+if (document.cookie.indexOf("fee_status=true")==-1){document.cookie='fee_status=true'};
+}
+//fore iqiyi enable html5 player function
+if (document.URL.indexOf("iqiyi.com") >= 0){
+if (document.cookie.indexOf("player_forcedType=h5_VOD")==-1){
+    document.cookie='player_forcedType=h5_VOD'
+    if(localStorage.reloadTime && Date.now() - parseInt(localStorage.reloadTime)<60000){
+        console.log('no reload')
+    }else{
+        location.reload()
+        localStorage.reloadTime = Date.now();
+    }
+}
+}
+</script><style type="text/css">object,embed{                -webkit-animation-duration:.001s;-webkit-animation-name:playerInserted;                -ms-animation-duration:.001s;-ms-animation-name:playerInserted;                -o-animation-duration:.001s;-o-animation-name:playerInserted;                animation-duration:.001s;animation-name:playerInserted;}                @-webkit-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}                @-ms-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}                @-o-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}                @keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}</style></head>
+
+<body class="mui-ios mui-ios-11 mui-ios-11-0" style="">
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+        <h1 class="mui-title">滑动触发列表项菜单</h1>
+    </header>
+    <div class="mui-content">
+        <h5 class="mui-content-padded" style="margin: 15px 10px;">拖拽(滑动)显示多功能菜单</h5>
+        <ul id="OA_task_2" class="mui-table-view">
+            <li class="mui-table-view-cell mui-transitioning">
+                <div class="mui-slider-right mui-disabled">
+                    <a class="mui-btn mui-btn-grey mui-icon mui-icon-person" style="transform: translate(0px, 0px);"></a>
+                    <a class="mui-btn mui-btn-yellow mui-icon mui-icon-phone" style="transform: translate(-90px, 0px);"></a>
+                    <a class="mui-btn mui-btn-red mui-icon mui-icon-email" style="transform: translate(-180px, 0px);"></a>
+                </div>
+                <div class="mui-slider-handle" style="transform: translate(0px, 0px);">
+                    <div class="mui-table-cell">
+                        左滑显示多功能菜单
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script src="../js/mui.min.js"></script>
+    <script>
+        mui.init();
+        (function($) {
+            //$.swipeoutOpen(el,direction)//打开指定列的滑动菜单，el:指定列的dom对象，direction：取值left|right，指定打开的是左侧或右侧滑动菜单
+            //$.swipeoutClose(el);//关闭指定列的滑动菜单，el:指定列的dom对象
+            //				setTimeout(function() {
+            //					$.swipeoutOpen(document.getElementById("OA_task_1").querySelector('li:last-child'), 'left');
+            //					setTimeout(function() {
+            //						$.swipeoutClose(document.getElementById("OA_task_1").querySelector('li:last-child'));
+            //					}, 1000);
+            //				}, 1000);
+            //第一个demo，拖拽后显示操作图标，点击操作图标删除元素；
+            $('#OA_task_1').on('tap', '.mui-btn', function(event) {
+                var elem = this;
+                var li = elem.parentNode.parentNode;
+                mui.confirm('确认删除该条记录？', 'Hello MUI', btnArray, function(e) {
+                    if (e.index == 0) {
+                        li.parentNode.removeChild(li);
+                    } else {
+                        setTimeout(function() {
+                            $.swipeoutClose(li);
+                        }, 0);
+                    }
+                });
+            });
+            var btnArray = ['确认', '取消'];
+            //第二个demo，向左拖拽后显示操作图标，释放后自动触发的业务逻辑
+            $('#OA_task_2').on('slideleft', '.mui-table-view-cell', function(event) {
+                var elem = this;
+                mui.confirm('确认删除该条记录？', 'Hello MUI', btnArray, function(e) {
+                    if (e.index == 0) {
+                        elem.parentNode.removeChild(elem);
+                    } else {
+                        setTimeout(function() {
+                            $.swipeoutClose(elem);
+                        }, 0);
+                    }
+                });
+            });
+            //第二个demo，向右拖拽后显示操作图标，释放后自动触发的业务逻辑
+            $('#OA_task_2').on('slideright', '.mui-table-view-cell', function(event) {
+                var elem = this;
+                mui.confirm('确认删除该条记录？', 'Hello MUI', btnArray, function(e) {
+                    if (e.index == 0) {
+                        elem.parentNode.removeChild(elem);
+                    } else {
+                        setTimeout(function() {
+                            $.swipeoutClose(elem);
+                        }, 0);
+                    }
+                });
+            });
+        })(mui);
+    </script>
+
+
+<audio controls="controls" style="display: none;"></audio></body><style type="text/css">#yddContainer{display:block;font-family:Microsoft YaHei;position:relative;width:100%;height:100%;top:-4px;left:-4px;font-size:12px;border:1px solid}#yddTop{display:block;height:22px}#yddTopBorderlr{display:block;position:static;height:17px;padding:2px 28px;line-height:17px;font-size:12px;color:#5079bb;font-weight:bold;border-style:none solid;border-width:1px}#yddTopBorderlr .ydd-sp{position:absolute;top:2px;height:0;overflow:hidden}.ydd-icon{left:5px;width:17px;padding:0px 0px 0px 0px;padding-top:17px;background-position:-16px -44px}.ydd-close{right:5px;width:16px;padding-top:16px;background-position:left -44px}#yddKeyTitle{float:left;text-decoration:none}#yddMiddle{display:block;margin-bottom:10px}.ydd-tabs{display:block;margin:5px 0;padding:0 5px;height:18px;border-bottom:1px solid}.ydd-tab{display:block;float:left;height:18px;margin:0 5px -1px 0;padding:0 4px;line-height:18px;border:1px solid;border-bottom:none}.ydd-trans-container{display:block;line-height:160%}.ydd-trans-container a{text-decoration:none;}#yddBottom{position:absolute;bottom:0;left:0;width:100%;height:22px;line-height:22px;overflow:hidden;background-position:left -22px}.ydd-padding010{padding:0 10px}#yddWrapper{color:#252525;z-index:10001;background:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ab20.png);}#yddContainer{background:#fff;border-color:#4b7598}#yddTopBorderlr{border-color:#f0f8fc}#yddWrapper .ydd-sp{background-image:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ydd-sprite.png)}#yddWrapper a,#yddWrapper a:hover,#yddWrapper a:visited{color:#50799b}#yddWrapper .ydd-tabs{color:#959595}.ydd-tabs,.ydd-tab{background:#fff;border-color:#d5e7f3}#yddBottom{color:#363636}#yddWrapper{min-width:250px;max-width:400px;}</style></html>

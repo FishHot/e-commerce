@@ -41,7 +41,7 @@ body{
         line-height: 45px;
         margin: 0;
     }
-    >a.icon-search{
+    >a.icon-search,a.icon-home,a.icon_refresh{
         position: absolute;
         right: 0px;
         top: 0px;
@@ -93,6 +93,7 @@ body{
 }
 #footer{
     position: fixed;
+    z-index: 2;
     width: 100%;
     background-color: @mainColor;
     bottom: 0;
@@ -104,6 +105,9 @@ body{
                 display: block;
                 color: #fff;
                 padding: 6px 0;
+                &.active{
+                    color: orange;
+                }
                 >i{
                     display: block;
                     &::before{
@@ -116,5 +120,21 @@ body{
                 }
             }
         }
+    }
+    &.productDetail{
+        height: 50px;   
+        background-color: #eee;
+        .icon-car{
+            line-height: 50px;
+            font-size: 20px;
+            text-align: center;
+        }
+        .addbuyCar,.buy{
+            padding: 8px 5px;
+            button{
+                width: 100%;
+            }
+        }
+        
     }
 }

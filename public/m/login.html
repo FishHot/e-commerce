@@ -11,7 +11,7 @@
     <!-- 字体图标 -->
     <link rel="stylesheet" href="lib/fontAwesome/css/font-awesome.css">
     <!-- less文件 -->
-    <link rel="stylesheet/less" href="./less/search.less">
+    <link rel="stylesheet/less" href="./less/login.less">
     <!-- less编译 -->
     <script src="./lib/less/less.js"></script>
 </head>
@@ -20,27 +20,24 @@
 
     <!-- 头部区域 -->
     <header id="header">
-        <h4>搜索中心</h4>
+        <h4>登录</h4>
         <a class="fa fa-arrow-left icon-left"  href="javascript:history.back()"></a>
     </header>
     <main id="main">
-            <div class="search-box">
-                    <form action="#" class="input-search">
-                        <input type="search" placeholder="输入你喜欢的商品">
-                    </form>
-                    <button type="button" class="btn-search mui-btn mui-btn-primary">搜索</button>
-                </div>
-                <div class="history">
-                    <div class="history-title">
-                        <span>搜索历史</span>
-                        <i class="fa fa-trash history-clear">清空记录</i>
+            <form class="mui-input-group">
+                    <div class="mui-input-row">
+                        <label>用户名</label>
+                    <input type="text" class="mui-input-clear username" placeholder="请输入用户名">
                     </div>
-                    <div class="history-content">
-                        <ul>
-        
-                        </ul>
+                    <div class="mui-input-row">
+                        <label>密码</label>
+                        <input type="password" class="mui-input-password password" placeholder="请输入密码">
                     </div>
-                </div>
+                    <div class="mui-button-row">
+                        <button type="button" class="mui-btn mui-btn-primary btn-login" >登录</button>
+                        <button type="button" class="mui-btn mui-btn-danger btn-register" >注册</button>
+                    </div>
+                </form>
     </main>
     <!-- 底部区域 -->
     <footer id="footer">
@@ -52,21 +49,14 @@
         </div>
     </footer>
 
-    <script type="text/html" id="historyTpl">
-            {{each rows value}}
-            <li>
-                <a href='./searchList.html?key={{value.content}}'>{{value.content}}</a>
-                <i class="fa fa-close delete" data-id=" {{value.id}} "></i>
-            </li>
-            {{/each}}
-        </script>
+    
     <!-- mui插件 -->
     <script src="./lib/mui/js/mui.js"></script>
     <!-- 操作元素 -->
     <script src="./lib/zepto/zepto.min.js"></script>
     <!-- 模板引擎 -->
     <script src="./lib/artTemplate/template-web.js"></script>
-    <script src="./js/search.js"></script>
+    <script src="./js/login.js"></script>
 </body>
 
 </html>

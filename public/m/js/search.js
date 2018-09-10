@@ -22,6 +22,7 @@ Letao.prototype = {
                 return;
             }
             // var oder = true;
+            location = './searchList.html?key='+ search.trim();
             var historyList = JSON.parse(localStorage.getItem('history')) || [];
             for(var i = 0;i < historyList.length;i++){
                 if(historyList[i].content == search){
@@ -40,7 +41,7 @@ Letao.prototype = {
                 historyList.push(searchObj);
                 localStorage.setItem('history',JSON.stringify(historyList));
                 that.queryHistory();
-                location = './searchList.html'
+                
                 
         })
     },

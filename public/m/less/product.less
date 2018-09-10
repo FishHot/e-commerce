@@ -1,0 +1,86 @@
+@import 'base.less';
+
+#main{
+    
+    background-color: #fff;
+    #product-detail{
+        >div{
+            border-bottom: 1px solid #ccc;
+        }
+        .product-name{
+            padding: 10px 5px;
+            >p{
+                font-size: 18px;
+                color: black;
+                margin: 0;
+            }
+        }
+        .product-price{
+            height: 50px;
+            line-height: 50px;
+            padding: 0 10px;
+            span{
+                font-size: 14px;
+            }
+            strong{
+                font-size: 24px;
+                color: #ea543d;
+                margin-right: 10px;
+            }
+            del{
+                color: #ccc;
+                font-size: 14px;
+            }
+        }
+        .product-size{
+            padding: 15px 10px;
+            span{
+                height: 28px;
+                line-height: 28px;
+                font-size: 14px;
+                float: left;
+            }
+            ul{
+                float: left;
+                // margin-right: 10px;
+                li{
+                    float: left;
+                    // width: 25px;
+                    padding: 0 5px;
+                    height: 28px;
+                    line-height: 28px;
+                    text-align: center;
+                    margin-left: 5px;
+                    margin-bottom: 5px;
+                    font-size: 14px;
+                    &.active{
+                        background-color: orange;
+                    }
+                    &:nth-of-type(n + 2){
+                    border:1px solid #ccc;
+                    }
+                }
+            }
+        }
+        .product-num{
+           padding: 10px;
+            span{
+                float: left;
+                height: 28px;
+                line-height: 28px;
+                &:first-of-type{
+                    margin-right: 10px;
+                    font-size: 14px;
+                }
+                &:last-of-type{
+                    margin-left: 10px;
+                    font-size: 14px;
+                }
+            }
+           .mui-numbox{
+               float: left;
+               height: 28px;
+           }
+        }
+    }
+}

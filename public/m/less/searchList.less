@@ -41,4 +41,43 @@
            }
        }
    }
+   .productsList{
+       padding: 5px;
+       .product{
+           padding: 5px;
+           a{
+            display: block;
+            text-align: center;
+            border: 1px solid #ccc;
+            padding-bottom: 10px;
+            .products-img{
+             width: 100%;
+            }
+            .products-name{
+                line-height: 18px;
+                overflow: hidden;
+                font-size: 14px;
+                height: 36px;
+                padding: 0 10px;
+            }
+            .products-price{
+                >span{
+                    color: #f30;
+                    font-size: 12px;
+                    margin-right: 5px;
+                }
+                >del{
+                    color: #ccc;
+                    font-size: 12px;
+                }
+            }
+            .products-buy{
+                display: block;
+                margin: 0 auto;
+                background-color: @mainColor;
+            }
+        }
+       }
+       
+   }
 }

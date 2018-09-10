@@ -50,14 +50,22 @@
                     font-size: 14px;
                     color: gray;
                     border-bottom: 1px solid #ccc;
+                    display: flex;
                     &:last-of-type{
                         border-bottom: 0;
                     }
-                    span{
+                    a{
+                        display: block;
                          line-height: 30px;
+                         flex: 1;
+                         &:visited{
+                             color: #666;
+                         }
                         }
                     >i{
                         line-height: 30px;
+                        text-align: center;
+                        width: 30px;
                     }
                 }
             }
